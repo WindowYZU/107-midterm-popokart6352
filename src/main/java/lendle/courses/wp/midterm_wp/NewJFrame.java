@@ -101,6 +101,21 @@ public class NewJFrame extends javax.swing.JFrame {
         try {
             jButton1.setEnabled(false);
             //從 combobox 抓出被選到的項目，存到變數裡
+            J.ComboBox combo = new ComboBox();
+            for(int i=0;i++,i<=100){
+                combo.addItem(""+i);
+            }
+            JButton bt = new JButton("OK");
+            bt.addActionListener(new ActionListener(){
+                @Override
+                public void actionPerformed(ActionEvent e){
+                    System.out.println(combo.SelectedItem());
+                }
+        }};
+        frame.add(combo,"center");
+        frame.add(bt,"south");
+        frame.setSize(500,500);
+        frame.setVisible(true);
             String selectedItem="";
             /////////////////////////////////////
             URL url = new URL(selectedItem);
@@ -118,7 +133,9 @@ public class NewJFrame extends javax.swing.JFrame {
                         progress.setVisible(false);
                         jButton1.setEnabled(true);
                         //將下載好的項目加入到 jList 裡面
-                        
+                        JList list=new Jlist(downloading);
+                        JScrollPane scroll=new JScrollPane(list);
+                        frame.add(scroll);
                         ////////////////////////////
                         SwingUtilities.invokeLater(new Runnable() {
                             @Override
@@ -126,6 +143,7 @@ public class NewJFrame extends javax.swing.JFrame {
                                 try {
                                     URL fileURL=tempFile.toURI().toURL();
                                     //利用 fileURL 將 image icon 加到 jLabel2
+                                    JPut(image.icon)=Jlabel2
                                     ////////////////////////////////////////
                                     jList1.updateUI();
                                 } catch (Exception ex) {
